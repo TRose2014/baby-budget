@@ -4,12 +4,12 @@ import Home from './Home/Home';
 
 function Main() {
   return (
-    <div>
+    <main>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/item" element={<ItemList />} />
       </Routes>
-    </div>
+    </main>
     // <main>
     //   <Routes>
     //     <Route exact path="/" component={Home} />
