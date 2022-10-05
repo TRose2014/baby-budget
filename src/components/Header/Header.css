@@ -1,0 +1,19 @@
+.css-5nwj3y {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 3%;
+  background-color: #6c9bd2;
+  margin: 0% !important;
+  padding: 2%;
+}
+
+a {
+  color: black !important;
+  text-decoration: none;
+  font-size: 1.5em;
+}
+
+a:hover{
+  text-decoration: underline;
+  font-weight: bold;
+}
