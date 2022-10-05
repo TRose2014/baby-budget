@@ -1,4 +1,3 @@
-// import logo from '../../logo.svg';
 import Form from '../Form/Form';
 
 const Home = () => {
@@ -10,9 +9,6 @@ const Home = () => {
         <h4><em>'Cuz babies be expensive'</em></h4>
       </header>
       <Form />
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header> */}
     </div>
   )
 };

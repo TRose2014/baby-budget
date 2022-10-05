@@ -10,13 +10,6 @@ function Main() {
         <Route path="/item" element={<ItemList />} />
       </Routes>
     </main>
-    // <main>
-    //   <Routes>
-    //     <Route exact path="/" component={Home} />
-    //     <Route path="/item" component={itemList} />
-    //     {/* <Route path="/drinks" component={() => (<ItemCard data={data[0]} />)} /> */}
-    //   </Routes>
-    // </main>
   );
 }
 export default Main;
