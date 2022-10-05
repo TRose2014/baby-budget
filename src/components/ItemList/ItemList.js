@@ -1,17 +1,29 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {TextField , Button } from '@mui/material';
+import { db } from '../../firebase.js';
+import { collection , query, orderBy , onSnapshot, addDoc,serverTimestamp} from 'firebase/firestore';
 
+const q = query(collection(db, 'budget-babies'), orderBy('timestamp', 'desc'));
 
 const ItemList = () => {
-  const [todos,setTodos] = useState([
-    'Create Blockchain App',
-    'Create a Youtube Tutorial'
-    ]);
-    const [input, setInput]=useState('');
+  const [todos,setTodos] = useState([]);
+  const [input, setInput]=useState('');
+
+    useEffect(() => {
+      onSnapshot(q, (snapshot) => {
+        setTodos(snapshot.docs.map(doc=>({
+          id: doc.id,
+          item: doc.data()
+          })))
+          })
+          },[input]);
 
     const addTodo=(e)=>{
       e.preventDefault();
-      setTodos([...todos,input]);
+      addDoc(collection(db, 'budget-babies'), {
+        todo: input,
+        timestamp: serverTimestamp()
+      })
       setInput('');
     };
 
@@ -24,13 +36,12 @@ const ItemList = () => {
           <Button variant="contained" color="primary" onClick={addTodo}  >Add Todo</Button>
         </form>
         <ul>
-        {todos.map(todo => <li>{todo}</li>)}
+          {console.log('items', todos)}
+        {todos.map(item => <li key={item.id}>{item.item.todo}</li>)}
         </ul>
       </div>
 
     )
-  
-  // return <h1>Item List</h1>;
 };
 
 export default ItemList;
